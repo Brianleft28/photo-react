@@ -1,4 +1,10 @@
+import {useContext} from "react";
+// import cursor context
+import { CursorContext } from "../context/CursorContext";
+
+// import react-router-dom
 import { Link } from "react-router-dom";
+// import img
 import WomanImg from "../img/home/woman.png";
 // import motion
 import { motion } from "framer-motion";
@@ -6,6 +12,7 @@ import { motion } from "framer-motion";
 import { transition1 } from "../transitions";
 
 const Home = () => {
+  const { mouseEnterHandler, mouseLeaveHandler } = useContext(CursorContext);
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -23,6 +30,8 @@ const Home = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: "-50%" }}
             transition={transition1}
+            onMouseEnter={mouseEnterHandler}
+            onMouseLeave={mouseLeaveHandler}
             className="w-full pt-36 pb-14 lg:pt-0 lg:pb-0 lg:w-auto z-10 lg:absolute flex flex-col  justify-center items-center lg:items-start lg:top-36 lg:left-32"
           >
             <h1 className="h1">

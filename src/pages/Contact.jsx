@@ -1,3 +1,8 @@
+// import context
+import { useContext } from "react";
+// import cursor context
+import { CursorContext } from "../context/CursorContext";
+
 // import img
 import womanIng from "../img/contact/woman.png";
 // import motion
@@ -6,6 +11,7 @@ import { motion } from "framer-motion";
 import { transition1 } from "../transitions.js";
 
 const Contact = () => {
+  const { mouseEnterHandler, mouseLeaveHandler } = useContext(CursorContext);
   return (
     <motion.section
       initial={{ opacity: 0, y: "100%" }}
@@ -25,7 +31,10 @@ const Contact = () => {
             className="hidden lg:flex bg-[#eef7f9] absolute bottom-0 left-0 right-0 top-72 -z-10"
           ></motion.div>
           {/* text & form */}
-          <div className="lg:flex-1 lg:pt-32 px-4 lg:relative left-16">
+          <div 
+          onMouseEnter={mouseEnterHandler}
+          onMouseLeave={mouseLeaveHandler}
+          className="lg:flex-1 lg:pt-32 px-4 lg:relative left-16">
             <h1 className="h1">Contact me</h1>
             <p className="mb-12">I would love to get suggestions from you.</p>
             {/* Form */}
